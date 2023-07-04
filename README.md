@@ -57,77 +57,36 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 
 ​
 
-lung_nodule_detection/
+richness_of_learned_representation/
 
 	src/
 
-      utils/
+      	utils/
 
         data_prep/
 
-            create_folds.py
+        	generation_of_patches.py
 
-            generate_patches.py
+        compression/
+		dataloader/
+			compression_train_dataset.py
+   		model/
+     			model_without_batchnorm.py
+		training_and_inference/
+			compression_training.py
+        		infer_save_lat_decom.py
 
-            generate_slices.py
+        segmentation/
+		dataloader/
+			datasets.py 
+   		model/
+  			SEG_DECODER.py
+     		training_and_inference/
+    			training.py
+      			eval_lat.py
+		
 
-            visualize.py
-
-        downloader.py
-
-        data_loader.py
-
-        exporter.py
-
-        get_config.py
-
-        models.py
-
-        infer_stage1.py
-
-        infer_stage2.py
-
-        train_stage1.py
-
-        train_stage2.py
-
-        utils.py
-
-      export.py
-
-      inference.py
-
-      train.py
-
-      prepare_data.py
-
-	configs/
-
-      stage1_config.json
-
-      stage2_config.json
-
-      download_config.json
-
-  media/
-
-	tests/
-
-      test_export.py
-
-      test_inference.py
-
-      test_train.py
-
-	init_venv.sh
-
-	README.md
-
-	requirements.txt
-
-	setup.py
-
-​
+     
 
 ## System Specifications
 
@@ -269,7 +228,7 @@ Department of Electrical Engineering,</br>
 
 Indian Institute of Technology Kharagpur</br>
 
-email: debdoot@ee.iitkgp.ac.in, nirmalya@ee.iitkgp.ac.in
+email: debdoot@ee.iitkgp.ac.in
 
 ​
 
@@ -285,10 +244,10 @@ email: ramanathan.sethuraman@intel.com
 
 ​
 
-The codes/model was contributed by
+The codes/model were contributed by
 
 ​
-<a href=""> Ravi Kakaiya</a>,</br>
+<a href="https://github.com/ravikakaiya"> Ravi Kakaiya</a>,</br>
 
 Department of Electrical Engineering,</br>
 
@@ -296,7 +255,7 @@ Indian Institute of Technology Kharagpur</br>
 
 email: ravijk8299@kgpian.iitkgp.ac.in</br>
 
-Github username: 
+Github username: ravikakaiya
 
 ​
 
