@@ -200,6 +200,9 @@ The quality of compression in terms of SSIM and pSNR at varying network depth or
 In the case of the segmentation model, dice coefficient values for the baselines and $net_{seg,D}(·)$, which is trained using compressed representations, are reported in Table I. The results indicate that $net_{seg,D}(·)$ performs similarly to BL 3 and BL 4 in terms of dice coefficient. This suggests that the compressed representations produced by $net_C(·)$ contain significant semantic information that can be leveraged for other image analysis tasks, even though $net_C(·)$ was not explicitly trained for this purpose. Further, it can be observed that increasing the value of d, which results in a deeper network and higher compression factor, results in poorer reconstruction from the compressed representation owing to loss of information
 
 
+
+![psnr_icme_fn (2) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/84c787e1-2fa0-4610-8e64-74eaab3428b4)
+
 <!---![psnr_icme_fn (2) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/08d39e9a-7be0-4f6e-827b-bf2115895cb5)
 ![ssim_icme_fn (1) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/e17350f9-8a5f-4e73-93df-4af83b1d3f18)
 
@@ -223,13 +226,9 @@ Pretrained models for inference are available in the code section.
 
 ​
 ## Sample Output
+A comparison with the ground truth, baselines, and model outputs is shown below.
+![ravisave](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/41ed4537-c3c1-4317-8301-185ffb59d677)
 
-This is the ground truth image.
-![gt (2)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/12860e45-832a-4390-afbe-25128abe1e9e)
-
-This is the predicted output.
-
-![mask_exp_1 (3)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/47bebd4f-e311-486f-a3da-00c3ded6876c)
 
 ## Acknowledgement
 
