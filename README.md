@@ -57,33 +57,31 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 
 ​
 
-richness_of_learned_representation/
-
 	src/
-
-      	utils/
-
-        data_prep/
-
-        	generation_of_patches.py
-
-        compression/
+		data_prep/
+		
+		generation_of_patches.py
+		
+		compression/
 		dataloader/
 			compression_train_dataset.py
-   		model/
-     			model_without_batchnorm.py
+		model/
+			model_without_batchnorm.py
 		training_and_inference/
 			compression_training.py
-        		infer_save_lat_decom.py
-
-        segmentation/
+			infer_save_lat_decom.py
+		
+		segmentation/
 		dataloader/
 			datasets.py 
-   		model/
-  			SEG_DECODER.py
-     		training_and_inference/
-    			training.py
+		model/
+			SEG_DECODER.py
+		training_and_inference/
+			training.py
       			eval_lat.py
+	 utils/
+  		saved_models/
+	 
 		
 
      
