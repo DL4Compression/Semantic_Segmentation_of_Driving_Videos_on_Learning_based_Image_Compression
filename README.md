@@ -319,6 +319,6 @@ Github username: Rakshith2597
 
 <div id="densenet">
 
-<a href="#abs">[1]</a> R. Sathish, R. Sathish, R. Sethuraman, D. Sheet.Lung Segmentation and Nodule Detection in Computed Tomography Scan using a Convolutional Neural Network Trained Adversarially using Turing Test Loss. In Proceedings of 42nd Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC), 2020. <a href="https://ieeexplore.ieee.org/abstract/document/9175649"> (link) </a> 
+<a href="#abs">[1]</a> Ravi Kakaiya, Rakshith Sathish, Debdoot Sheet, Ramananthan Sethuraman "Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation" .  </a> 
 
 </div>
