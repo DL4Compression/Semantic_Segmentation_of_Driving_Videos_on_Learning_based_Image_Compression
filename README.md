@@ -6,6 +6,7 @@ Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the pote
 ​
 
 ​
+![graph_abstract (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/2b0ac268-90cb-4adf-92c7-01868bd6714e)
 
 >**Paper** : Ravi Kakaiya, Rakshith Sathish, Debdoot Sheet, Ramananthan Sethuraman **"Exploiting Richness of Learned Compressed
 Representation of Images for Semantic Segmentation"** . </br> 
@@ -158,6 +159,13 @@ Follow the below steps to prepare and organize the data for training.
 The compression model $net_C( . ) - net_D( . )$ was trained for 100 epochs with Adam as optimizer using a step learning rate scheduler with an initial learning
 rate of $1 × 10^{-2}$, step size of 10 and multiplication factor γ of 0.75. The segmentation decoder ($net_{seg,D′}$) was trained for 40,000 iterations using SGD as the optimizer with an initial learning rate of $1×10^{-3}$. Mean square error and cross-entropy loss were chosen as loss functions for compression and segmentation, respectively.
 
+![netc (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/113bcb23-5a08-4cb0-8e39-7cf522bcfb8a)      
+![netd (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/0741ceda-3162-4b93-8e5a-5c28e431ba19)
+
+
+
+
+![net_segd (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/a4b7c7e9-adac-4280-ac6d-f7d50b82d123)
 
 <!---
 
@@ -192,7 +200,9 @@ The quality of compression in terms of SSIM and pSNR at varying network depth or
 In the case of the segmentation model, dice coefficient values for the baselines and $net_{seg,D}(·)$, which is trained using compressed representations, are reported in Table I. The results indicate that $net_{seg,D}(·)$ performs similarly to BL 3 and BL 4 in terms of dice coefficient. This suggests that the compressed representations produced by $net_C(·)$ contain significant semantic information that can be leveraged for other image analysis tasks, even though $net_C(·)$ was not explicitly trained for this purpose. Further, it can be observed that increasing the value of d, which results in a deeper network and higher compression factor, results in poorer reconstruction from the compressed representation owing to loss of information
 
 
-<!---
+<!---![psnr_icme_fn (2) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/08d39e9a-7be0-4f6e-827b-bf2115895cb5)
+![ssim_icme_fn (1) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/e17350f9-8a5f-4e73-93df-4af83b1d3f18)
+
 To evaluate the segmentation models execute
 
  `python inference.py --lunseg --foldno <int> --savepath <path> --jsonpath <path> --network <str>`
@@ -212,7 +222,14 @@ To evaluate the classifier network execute
 Pretrained models for inference are available in the code section. 
 
 ​
-​
+## Sample Output
+
+This is the ground truth image.
+![gt (2)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/12860e45-832a-4390-afbe-25128abe1e9e)
+
+This is the predicted output.
+
+![mask_exp_1 (3)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/47bebd4f-e311-486f-a3da-00c3ded6876c)
 
 ## Acknowledgement
 
