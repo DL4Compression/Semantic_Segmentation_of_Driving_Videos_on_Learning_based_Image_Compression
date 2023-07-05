@@ -196,12 +196,10 @@ To train the patch classifier network execute
 > Details about the arguments being passed and their purpose is explained within the code.
 
 ​
-The quality of compression in terms of SSIM and pSNR at varying network depth or the number of digest units (d) and bit length (n) is shown in Fig. 5 and Fig. 6, respectively. It can be observed that for all values of d in the range 1 to 3, we do not observe significant degradation in the quality of the decompressed image. However, as shown in Fig. 5 and Fig. 6 for values of n less than 6, we can observe a noticeable drop in performance. Further, we can observe that with a learnable compression codec, we can compress the images up to 200× without a significant drop in performance for a bit length of 8.
+The quality of compression in terms of SSIM and pSNR at varying network depth or the number of digest units (d) and bit length (n) is shown in the paper. It can be observed that for all values of d in the range 1 to 3, we do not observe significant degradation in the quality of the decompressed image. For values of n less than 6, we can observe a noticeable drop in performance. Further, we can observe that with a learnable compression codec, we can compress the images up to 200× without a significant drop in performance for a bit length of 8.
 In the case of the segmentation model, dice coefficient values for the baselines and $net_{seg,D}(·)$, which is trained using compressed representations, are reported in Table I. The results indicate that $net_{seg,D}(·)$ performs similarly to BL 3 and BL 4 in terms of dice coefficient. This suggests that the compressed representations produced by $net_C(·)$ contain significant semantic information that can be leveraged for other image analysis tasks, even though $net_C(·)$ was not explicitly trained for this purpose. Further, it can be observed that increasing the value of d, which results in a deeper network and higher compression factor, results in poorer reconstruction from the compressed representation owing to loss of information
 
 
-
-![psnr_icme_fn (2) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/84c787e1-2fa0-4610-8e64-74eaab3428b4)
 
 <!---![psnr_icme_fn (2) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/08d39e9a-7be0-4f6e-827b-bf2115895cb5)
 ![ssim_icme_fn (1) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/e17350f9-8a5f-4e73-93df-4af83b1d3f18)
