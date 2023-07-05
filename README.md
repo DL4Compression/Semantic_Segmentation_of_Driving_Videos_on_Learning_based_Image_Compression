@@ -5,7 +5,7 @@ Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the pote
 
 
 <p align="center">
-<img src="image_forder_for_readme/images/pipeline_ravi.png" alt="seg" style="width:1000px; height:400px" title="Compressor Architecture"/>
+<img src="media/pipeline.png" alt="seg" style="width:1000px; height:400px" title="Compressor Architecture"/>
 
 
 <p>
@@ -67,33 +67,30 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 
 
 	Exploiting-Richness-of-Learned-Compressed-Representation/
-	image_folder_for_readme/
-	src/
+	  media/
+	  src/
+		compression/
+        		utils/
+				dataloader_for_compression.py
+   				model.py
 
-      compression/
-      		utils/
-			dataloader_for_compression.py
-   			model.py
-
-		inference_and_save_latent.py
-		training.py
+	      		inference_and_save_latent.py
+	      		training.py
   		
 
   
-      data_preperation/
-      		generation_of_patches.py
+      		data_preperation/
+      			generation_of_patches.py
+		sample_images/
 
 
-      sample_images/
+     		 segmentation/
+      			utils/
+					dataloader_for_segmentation.py
+   					segmentation_model_decoder.py
 
-
-      segmentation/
-      		utils/
-			dataloader_for_segmentation.py
-   			segmentation_model_decoder.py
-
-	        inference_and_save_latent.py
-		training.py
+	        		inference_and_save_latent.py
+				training.py
 	LICENSE
 	README.md
 
@@ -101,8 +98,6 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 
 
 ## System Specifications
-
-​
 
 The code and models were tested on a system with the following hardware and software specifications.
 
@@ -114,12 +109,6 @@ The code and models were tested on a system with the following hardware and soft
 
 - 16GB RAM for inference
 
-​
-
-# Using the code
-
-​
-
 
 ## Data Preparation
 
@@ -127,41 +116,11 @@ Follow the below steps to prepare and organize the data for training.
 
 > Details about the arguments being passed and their purpose is explained within the code.
 ​
-
 >  Make sure the dataset has been adequately downloaded and extracted before proceeding.
 
 1. The compression model ( $net_C( . ) - net_D( . )$ ) for all baselines and the proposed method are trained with patches of 256×256, and segmentation models ( $net_{seg}( . ), net_{seg, D'}( . )$ ) were trained using non-overlapping patches of size 840×840, respectively, which were extracted from the training set without any overlapping.
 
-​
-<!---
-1. ` python prepare_data.py  --genslices --masktype <type> --datasetpath <path> --save_path <path>  `
-
-	This step extracts induvidual CT slices from the CT volumes provided in the dataset. Each of these slices are saved seperately as npy files with filename in the format `[series_uid]_slice[sliceno].npy`.
-
-	Perform the above step for masktype nodule and lung seperately before proceeding to the next step.
-
-​
-
-2. `python prepare_data.py --createfolds --datapath <path> --savepath <path>
-
---datasetpath <path> `
-
-	The above step first classifies the slices into two categories, positive and negative based on the presence of nodules in them. On completion, the dataset consists of CT volumes from 880 subjects, provided that ten subsets is divided into 10-folds for cross-validation. In each fold of the experiment, eight subsets from the dataset are separated for training and one each for validation and testing. A balanced dataset consisting of an equal number (approx.) of positive and negative slices is identified for each fold. Filenames of these slices of each fold are stored in separate JSON files.
-
-​
-
-3. `python prepare_data.py --genpatch --jsonpath <path> --foldno <int> --category <type> --data_path <path> --lungsegpath <path> --savepath <path> --patchtype <type> `
-
-	The above step generates patches which are used to train the classifier network.
-
-​
-
-4. `python prepare_data.py --visualize --seriesuid <str> --sliceno <int> --datapath <path> --savepath <path>`
-
-	To visualize a particular slice use the above line. 
-
-​-->
-
+	
 ## Training
 > Details about the arguments being passed and their purpose is explained within the code. <!---To see the details run `python train_network.py -h` -->
 
@@ -170,14 +129,14 @@ The compression model $net_C( . ) - net_D( . )$ was trained for 100 epochs with 
 rate of $1 × 10^{-2}$, step size of 10 and multiplication factor γ of 0.75. The segmentation decoder ($net_{seg,D′}$) was trained for 40,000 iterations using SGD as the optimizer with an initial learning rate of $1×10^{-3}$. Mean square error and cross-entropy loss were chosen as loss functions for compression and segmentation, respectively.
 
 <p align="center">
-<img src="image_forder_for_readme/images/compr_ravi.png" alt="cmpr" style="width:450px; height:350px" title="Compressor Architecture"/>     <img src="image_forder_for_readme/images/decompr_ravi.png" alt="dcmpr" style="width:450px; height:350px" "Decompressor Architecture"/>
+<img src="media/compr.png" alt="cmpr" style="width:400px; height:300px" title="Compressor Architecture"/> <img src="media/decompr.png" alt="dcmpr" style="width:400px; height:300px" "Decompressor Architecture"/>
 
 </p>
 <p align="center">
 			    	Compressor-Decompressor Architecutre
 		<p>
 <p align="center">
-<img src="image_forder_for_readme/images/segmentation_ravi.png" alt="seg" style="width:550px; height:350px" title="Compressor Architecture"/>
+<img src="media/segmentationi.png" alt="seg" style="width:500px; height:300px" title="Compressor Architecture"/>
 
 
 <p>
@@ -196,23 +155,6 @@ rate of $1 × 10^{-2}$, step size of 10 and multiplication factor γ of 0.75. Th
 ​
 The quality of compression in terms of SSIM and pSNR at varying network depth or the number of digest units (d) and bit length (n) is shown in the paper. It can be observed that for all values of d in the range 1 to 3, we do not observe significant degradation in the quality of the decompressed image. For values of n less than 6, we can observe a noticeable drop in performance. Further, we can observe that with a learnable compression codec, we can compress the images up to 200× without a significant drop in performance for a bit length of 8.
 In the case of the segmentation model, dice coefficient values for the baselines and $net_{seg,D}(·)$, which is trained using compressed representations, are reported in Table I. The results indicate that $net_{seg,D}(·)$ performs similarly to BL 3 and BL 4 in terms of dice coefficient. This suggests that the compressed representations produced by $net_C(·)$ contain significant semantic information that can be leveraged for other image analysis tasks, even though $net_C(·)$ was not explicitly trained for this purpose. Further, it can be observed that increasing the value of d, which results in a deeper network and higher compression factor, results in poorer reconstruction from the compressed representation owing to loss of information
-
-
-
-<!---![psnr_icme_fn (2) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/08d39e9a-7be0-4f6e-827b-bf2115895cb5)
-![ssim_icme_fn (1) (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/e17350f9-8a5f-4e73-93df-4af83b1d3f18)
-
-To evaluate the segmentation models execute
-
- `python inference.py --lunseg --foldno <int> --savepath <path> --jsonpath <path> --network <str>`
-
-​
-
-To evaluate the classifier network execute
-
-`python inference.py --patchclass --savepath <path> --imgpath <path>`
--->
-​
 
 ## Pre-trained Models
 Pretrained models for inference are available here. 
