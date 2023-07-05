@@ -71,11 +71,11 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 	  src/
 		compression/
         		utils/
-				dataloader_for_compression.py
+				dataloader.py
    				model.py
 
-	      		inference_and_save_latent.py
-	      		training.py
+	      		infer_and_save.py
+	      		train.py
   		
 
   
@@ -86,11 +86,11 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 
      		 segmentation/
       			utils/
-					dataloader_for_segmentation.py
-   					segmentation_model_decoder.py
+					dataloader.py
+   					model.py
 
-	        		inference_and_save_latent.py
-				training.py
+	        		infer_and_save.py
+				train.py
 	LICENSE
 	README.md
 
