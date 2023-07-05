@@ -184,31 +184,12 @@ rate of $1 × 10^{-2}$, step size of 10 and multiplication factor γ of 0.75. Th
 <p align="center">
 			    	Segmentation Decoder Architecture
 		<p>
-<!---
 
-To train the lung segmentation network without the discriminator execute the following line of code.
-
-`python train_network.py --lungseg --foldno <int> --savepath <path> --jsonpath <path> --datapath <path> --lungsegpath <path> --network <str> --epochs <int:optional> `
-
-​
-
-To train the lung segmentation network with discrimator and turing test loss, execute 
-
-`python train_network.py --lungsegadv --foldno <int> --savepath <path> --jsonpath <path> --datapath <path> --lungsegpath <path> --network <str> --epochs <int:optional> `
-
-​
-
-To train the patch classifier network execute
-
-`python patch_classifier --savepath <path> --imgpath <path> --epochs <int:optional> `
-
-​-->
 
 ​
 
 ## Evaluation
 
-​
 
 > Details about the arguments being passed and their purpose is explained within the code.
 
@@ -237,7 +218,7 @@ To evaluate the classifier network execute
 Pretrained models for inference are available here. 
 
 ## Sample Images for training
-The sample_images [sample_images](docs/CONTRIBUTING.md) folder under src contains images for you to test  out.
+The sample_images [sample_images](src/sample_images) folder under src contains images for you to test  out.
 ​
 ## Sample Output
 A comparison with the ground truth, baselines, and model outputs is shown below.
