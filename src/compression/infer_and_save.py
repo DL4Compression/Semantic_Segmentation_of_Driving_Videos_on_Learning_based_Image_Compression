@@ -19,6 +19,8 @@ from torchmetrics.functional import peak_signal_noise_ratio as psnr
 from model_without_batchnorm import autoencoder
 from utils.compression_test_dataset import IDDCOM
 import timeit
+import numpy
+
 
 # The Float->Int module
 class Float2Int(nn.Module):
@@ -52,12 +54,8 @@ def main( args ):
     
 
     # load the given model
-    # with open(os.path.abspath(), 'rb') as modelfile:
-    
     loaded_model_file = torch.load(args.model_file)
     model.load_state_dict(loaded_model_file['model_state'])
-    # ssim = StructuralSimilarityIndexMeasure().cuda()
-    # psnr = PeakSignalNoiseRatio().cuda()
     if torch.cuda.is_available() and args.gpu:
         # print("model sent to cuda")
         model = model.to(device)
@@ -86,14 +84,11 @@ def main( args ):
             for idx, (image, _, name) in enumerate(tq(iddinferdl)):
                 img_size = sys.getsizeof(image.storage())
                 if torch.cuda.is_available() and args.gpu:
-                    # print("img sent to cuda")
                     image = image.to(device)
-                # print(torch.max(image)
-                # print(image.)
+
                 start = timeit.timeit()
                 compressed = model.encoder(image) # forward through encoder
                 end = timeit.timeit()
-                # print(end - start)
                 latent_int = float2int(compressed) # forward through Float2Int module
 
                 # usual numpy conversions
@@ -139,12 +134,8 @@ def main( args ):
                 latent_float = int2float(latent_inp) # back to float
                 decompressed = model.decoder(latent_float) # forward through decoder
 
-                # avg_ssim += ssim(image,decompressed).item()
-                # avg_psnr += psnr(image,decompressed).item()
-
                 original, reconstructed = image_numpy, decompressed.cpu().numpy()
                 # en = timeit.timeit()
-                # print(en-st)
                 all_cf.append(cf)
 
                 n += 1
@@ -153,7 +144,6 @@ def main( args ):
                     # save the latent code if requested. the saved items are
                     if not(os.path.exists(os.path.join(args.out_latent,dirc))):
                         os.mkdir(os.path.join(args.out_latent,dirc))
-                    # np.save(os.path.join(args.out_latent,dirc)+'/'+name[0].split("_")[0],latent_float.detach().cpu())
                     np.save(os.path.join(args.out_latent,dirc)+'/'+name[0],latent_float.detach().cpu())
                     
 
@@ -177,8 +167,6 @@ def main( args ):
         np.save(os.path.join(args.bit_dir,dirc,'raw_bitrate'),raw_bitrate)
         np.save(os.path.join(args.bit_dir,dirc,'cae_bitrate'),cae_bitrate)
         
-    # avg_psnr = avg_psnr/(n)
-    # avg_ssim = avg_ssim/(n)
     avg_cf = np.mean(all_cf)
     avg_bits = np.mean(all_bits)
     import json
