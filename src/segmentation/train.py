@@ -1,5 +1,3 @@
-# Author: Xiangtai Li
-# Email: lxtpku@pku.edu.cn
 """
     Distribute Training Code For Fast training.
 """
@@ -54,10 +52,6 @@ def get_arguments():
     parser.add_argument('--gpu_num', type=int, default=2)
     parser.add_argument("--img_dir", type=str, default="./data",help="Path to the directory containing the Cityscapes dataset.")
     parser.add_argument("--lbl_dir", type=str, default="./data",help="Path to the directory containing the Cityscapes dataset.")
-    # parser.add_argument("--data_dir", type=str, default="./data",
-    #                     help="Path to the directory containing the Cityscapes dataset.")
-    # parser.add_argument("--data_list", type=str, default="./data/cityscapes/train.txt",
-    #                     help="Path to the file listing the images in the dataset.")
     parser.add_argument("--data_set", type=str, default="cityscapes", help="dataset to train")
     parser.add_argument("--arch", type=str, default="", help="network architecture")
     parser.add_argument("--ignore_label", type=int, default=255,
@@ -245,9 +239,6 @@ def main():
             if args.local_rank == 0:
                 Log.info('iter = {} of {} completed, lr={}, loss = {}'.format(i_iter,
                                                                         len(trainloader), lr, reduce_loss.data.cpu().numpy()))
-                # if i_iter % args.save_pred_every == 0 and i_iter >= args.save_start:
-                    # print('save models ...')
-                    # torch.save(deeplab.state_dict(), osp.join(args.save_dir, str(args.arch) + str(i_iter) + '.pth'))
             it += 1
         torch.save(deeplab.state_dict(), osp.join(args.save_dir, str(args.arch) + str(ep) + '.pth'))
 

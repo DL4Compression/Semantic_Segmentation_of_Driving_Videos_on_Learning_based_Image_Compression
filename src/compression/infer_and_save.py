@@ -19,8 +19,6 @@ from torchmetrics.functional import peak_signal_noise_ratio as psnr
 from model_without_batchnorm import autoencoder
 from utils.compression_test_dataset import IDDCOM
 import timeit
-import numpy
-
 
 # The Float->Int module
 class Float2Int(nn.Module):

@@ -25,8 +25,6 @@ class SegmentationDataset(data.Dataset):
             list_mask = list_mask + list3
         self.seg_list = list_mask
         self.img_list = list_img
-        # print("gt ",len(self.seg_list))
-        # print("img ",len(self.img_list))
         self.test = test
         
     def __len__(self):

@@ -24,7 +24,6 @@ class IDD(data.Dataset):
 	def __getitem__(self, i):
 
 		# Read the images and masks (same as images)
-		# print(self.listimg[i])
 		image = Image.open(os.path.join(self.path_to_dataset,self.listimg[i]))
 		
 

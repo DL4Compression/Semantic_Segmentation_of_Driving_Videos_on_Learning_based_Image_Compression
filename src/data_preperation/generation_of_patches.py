@@ -22,28 +22,21 @@ def main (args):
             if imag.shape[0] > args.patch_dim and imag.shape[1] > args.patch_dim:
                 if(len(imag.shape)==3):
                     patches = view_as_windows(imag, window_shape=(args.patch_dim, args.patch_dim,3), step=args.step)
-                    # print(patches.shape)
                     for chid, ch in enumerate(patches):
                         for rowid, row in enumerate(ch):
                             for colid, patch in enumerate(row):
-                                # print(patch.shape)
                                 npim = patch.astype(np.uint8)
                                 imsave = Image.fromarray((patch).astype(np.uint8))
                                 save_folder_path = args.out_path
-                                # print(str(chid)+'-'+str(rowid))
                                 savepath = os.path.join(save_folder_path,sub_fold,file_name)+str(chid)+str(rowid)+'.'+ext
                                 imsave.save(savepath)
                 else:
                     patches = view_as_windows(imag, window_shape=(args.patch_dim, args.patch_dim), step=args.step)
-                    # print(patches.shape)
                     for chid, ch in enumerate(patches):
                         for rowid, patch in enumerate(ch):
-                            # print(patch.shape)
-                            # for colid, patch in enumerate(row):
                             npim = patch.astype(np.uint8)
                             imsave = Image.fromarray((patch).astype(np.uint8))
                             save_folder_path = args.out_path
-                            # print(str(chid)+'-'+str(rowid))
                             savepath = os.path.join(save_folder_path,sub_fold,file_name)+str(chid)+str(rowid)+'.'+ext
                             imsave.save(savepath)
         
