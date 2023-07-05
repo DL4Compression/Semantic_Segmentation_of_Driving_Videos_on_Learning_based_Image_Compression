@@ -3,10 +3,18 @@ Official implementation of the paper "Exploiting Richness of Learned Compressed 
 
 Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the potential to radically change the way we travel. Many of such vehicles currently rely on segmentation and object detection algorithms to detect and track objects around its surrounding. The data collected from the vehicles are often sent to cloud servers to facilitate continual/life-long learning of these algorithms. Considering the bandwidth constraints, the data is compressed before sending it to servers, where it is typically decompressed for training and analysis. In this work, we propose the use of a learning-based compression Codec to reduce the overhead in latency incurred for the decompression operation in the standard pipeline. We demonstrate that the learned compressed representation can also be used to perform tasks like semantic segmentation in addition to decompression to obtain the images. We experimentally validate the proposed pipeline on the Cityscapes dataset, where we achieve a compression factor up to 66× while preserving the information required to perform segmentation with a dice coefficient of 0.84 as compared to 0.88 achieved using decompressed images while reducing the overall compute by 11%.
 
-​
+
+<p align="center">
+<img src="utils/images/pipeline_ravi.png" alt="seg" style="width:1000px; height:400px" title="Compressor Architecture"/>
+
+
+<p>
+<p align="center">
+			    	Overview of proposed method
+		<p>
 
 ​
-![graph_abstract (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/2b0ac268-90cb-4adf-92c7-01868bd6714e)
+
 
 >**Paper** : Ravi Kakaiya, Rakshith Sathish, Debdoot Sheet, Ramananthan Sethuraman **"Exploiting Richness of Learned Compressed
 Representation of Images for Semantic Segmentation"** . </br> 
@@ -150,23 +158,27 @@ Follow the below steps to prepare and organize the data for training.
 ​-->
 
 ## Training
-
-​
-
 > Details about the arguments being passed and their purpose is explained within the code. <!---To see the details run `python train_network.py -h` -->
 
 ​The compression-decompression and the segmentation training routine are explained adequately in the paper. In the compression block, weights are updated for both  $net_C( . ) - net_D( . )$ with respect to gradients calculated using the reconstruction error between the Input Image and the decompressed Image. For the segmentation model, we use the dual graph convolutional neural network (DGCN) architecture proposed to perform segmentation. The segmentation network $net_{seg}(·)$ consists of a backbone network that provides a feature map X and dual graph convolutional layers, which effectively and efficiently models contextual information for semantic segmentation. We use ResNet-50 architecture as our backbone network.
 The compression model $net_C( . ) - net_D( . )$ was trained for 100 epochs with Adam as optimizer using a step learning rate scheduler with an initial learning
 rate of $1 × 10^{-2}$, step size of 10 and multiplication factor γ of 0.75. The segmentation decoder ($net_{seg,D′}$) was trained for 40,000 iterations using SGD as the optimizer with an initial learning rate of $1×10^{-3}$. Mean square error and cross-entropy loss were chosen as loss functions for compression and segmentation, respectively.
 
-![netc (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/113bcb23-5a08-4cb0-8e39-7cf522bcfb8a)      
-![netd (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/0741ceda-3162-4b93-8e5a-5c28e431ba19)
+<p align="center">
+<img src="utils/images/compr_ravi.png" alt="cmpr" style="width:450px; height:350px" title="Compressor Architecture"/>     <img src="utils/images/decompr_ravi.png" alt="dcmpr" style="width:450px; height:350px" "Decompressor Architecture"/>
+
+</p>
+<p align="center">
+			    	Compressor-Decompressor Architecutre
+		<p>
+<p align="center">
+<img src="utils/images/segmentation_ravi.png" alt="seg" style="width:550px; height:350px" title="Compressor Architecture"/>
 
 
-
-
-![net_segd (1)](https://github.com/DL4Compression/Exploiting-Richness-of-Learned-Compressed-Representation/assets/118466922/a4b7c7e9-adac-4280-ac6d-f7d50b82d123)
-
+<p>
+<p align="center">
+			    	Segmentation Decoder Architecture
+		<p>
 <!---
 
 To train the lung segmentation network without the discriminator execute the following line of code.
