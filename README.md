@@ -234,11 +234,10 @@ To evaluate the classifier network execute
 ​
 
 ## Pre-trained Models
+Pretrained models for inference are available here. 
 
-​
-
-Pretrained models for inference are available in the code section. 
-
+## Sample Images for training
+The sample_images [sample_images](docs/CONTRIBUTING.md) folder under src contains images for you to test  out.
 ​
 ## Sample Output
 A comparison with the ground truth, baselines, and model outputs is shown below.
