@@ -8,7 +8,6 @@ cudnn.benchmark = True
 from utils.compression_train_dataset import IDD
 from model_without_batchnorm import autoencoder
 from torchmetrics import PeakSignalNoiseRatio
-# from evaluators import compare_psnr_batch, compare_ssim_batch
 import wandb
 wandb.init(project="CAE_natural_video_compression_IDD_driving_16_03_23",name = "model_d_2", entity="ravijk")
 from tqdm import tqdm as tq
@@ -67,7 +66,6 @@ def main( args ):
 	
 	msecrit = torch.nn.MSELoss() # usual MSE loss function
 
-	# prev_test_ssim = -np.inf
 	prev_test_psnr = -np.inf
 	for epoch in range(start_epoch, args.epochs):
 		# regularly invoke the schedular
@@ -95,36 +93,14 @@ def main( args ):
 			output = model(images) # forward pass
 
 			loss = msecrit(output, images)
-			# psnr = psnr_loss(images,output)
-			# psnr = 20.0 * torch.log10(psnr).item()
-			# compute the required metrics
-			# if epoch%10==0:
-			# 	ssim = compare_ssim_batch(labels.detach().cpu().numpy(), output.detach().cpu().numpy())
-			# 	psnr = compare_psnr_batch(labels.detach().cpu().numpy(), output.detach().cpu().numpy())
-				# psnr = 20.0 * np.log10(psnr)
 			avg_train_loss += loss
-			# avg_train_psnr += psnr
-			# 	avg_train_ssim = avg_train_ssim+ssim
-			# 	cnt = cnt+1
-
-				# if idx % args.interval == 0:
-				# 	print('{tag} {0:4d}/{1:4d}/{2:4d} -> Loss: {3:.8f}, pSNR: {4:.8f}dB, SSIM: {5:.8f}'.format(
-				# 		idx, epoch, args.epochs, loss.item(), psnr, ssim, tag=colored('[Training]','yellow')))
-
 			loss.backward() # backward
 			optimizer.step() # weight updatepr
-			# print(idx)
-		# if epoch%10==0:
 		avg_train_loss = avg_train_loss/idx+1
-		# avg_train_psnr = avg_train_psnr/idx+1
-		# 	avg_train_ssim = avg_train_ssim/cnt
-
 		wandb.log(			
 			{
 				"epochs": epoch,
 				"Training mse loss": avg_train_loss,
-				# "Training pSNR": avg_train_psnr,
-				# "Training SSIM": avg_train_ssim,
 			}
 		)
 		# TRAINING DONE
@@ -138,18 +114,11 @@ def main( args ):
 			for idx, (images) in enumerate(tq(iddtestdl)):
 				if torch.cuda.is_available() and args.gpu:
 					images = images.cuda()
-				# print('image shape:',images.shape)
-				# print('label_shape:',labels.shape)
 				output = model(images) # forward pass
-				# print('output shape:',output.shape)
 				loss = msecrit(output, images) # loss calculation
 				# calculate the metrics (SSIM and pSNR)
 				psnr = psnr_loss(images,output).item()
-				# ssim = compare_ssim_batch(labels.detach().cpu().numpy(), output.detach().cpu().numpy())
-				# psnr = compare_psnr_batch(labels.detach().cpu().numpy(), output.detach().cpu().numpy())
-
 				avg_loss = ((n * avg_loss) + loss.item()) / (n + 1) # running mean
-				# avg_ssim = ((n * avg_ssim) + ssim) / (n + 1) # running mean
 				avg_psnr = ((n * avg_psnr) + psnr) / (n + 1) # running mean
 				n += 1
 
@@ -157,9 +126,6 @@ def main( args ):
 
 		schedular.step()
 
-		# print('{tag} Epoch: {0:3d}, Loss: {3:.8f}, pSNR: {1:.8f}, SSIM: {2:.8f}'.format(
-		# 			epoch, avg_psnr, avg_ssim, avg_loss, tag=colored('[Testing]','cyan')))
-					
 		wandb.log(			
 			{
 				"epoch": epoch,
@@ -168,7 +134,6 @@ def main( args ):
 				# "validation SSIM": avg_ssim,
 			}
 		)
-		# wandb.watch(model)
 		logg.append(
 			{
 				'epoch': epoch,
@@ -184,7 +149,6 @@ def main( args ):
 			json.dump(logg, logfile)
 
 		# model saving, only if the SSIM is better than before
-		# if avg_ssim > prev_test_ssim:
 		if avg_psnr > prev_test_psnr:
 			print(colored('[Saving] model saved to {}'.format(model_file), 'red'))
 			torch.save({
@@ -193,7 +157,6 @@ def main( args ):
 				'optim_state': optimizer.state_dict(),
 				'schedular_state': schedular.state_dict(),
 				}, os.path.abspath(model_file))
-			# prev_test_ssim = avg_ssim
 			prev_test_psnr = avg_psnr
 
 		else:
