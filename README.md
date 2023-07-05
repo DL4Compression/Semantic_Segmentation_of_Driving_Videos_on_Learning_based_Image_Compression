@@ -64,24 +64,41 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 
 ## Code and Directory Organization
 
-​
-src/
-	compression/
- 			utils/
-    				dataloader_for_compression.py
-				model.py
-    			training.py
-       			inference_and_save_latent.py
- 	data_preperation/
-  			generation_of_patches.py
-     	sample_images/
-  	segmentation/
-   			utils/
-      				dataloader_for_segmentation.py
-	  			segmentation_model_decoder.py
-      			training.py
-	 		inference_and_save_latent.py
-      				
+
+
+	Exploiting-Richness-of-Learned-Compressed-Representation/
+	image_folder_for_readme/
+	src/
+
+      compression/
+      		utils/
+			dataloader_for_compression.py
+   			model.py
+
+		inference_and_save_latent.py
+		training.py
+  		
+
+  
+      data_preperation/
+      		generation_of_patches.py
+
+
+      sample_images/
+
+
+      segmentation/
+      		utils/
+			dataloader_for_segmentation.py
+   			segmentation_model_decoder.py
+
+	        inference_and_save_latent.py
+		training.py
+	LICENSE
+	README.md
+
+
+
 
 ## System Specifications
 
@@ -104,7 +121,7 @@ The code and models were tested on a system with the following hardware and soft
 ​
 
 
-## Dataset used and Data Preparation
+## Data Preparation
 
 Follow the below steps to prepare and organize the data for training.
 
