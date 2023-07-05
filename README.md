@@ -55,7 +55,7 @@ BibTeX reference to cite, if you use it:
 
 The Cityscapes dataset was used for our training and evaluation. It has 5,000 images of size 1,024×2,048 with polygon annotations for 34 classes. We use the validation set provided in the dataset as our held-out test set and the training set is divided into training and testing datasets in the ratio of 80:20.
 
- >Dataset download page: [https://www.cityscapes-dataset.com/] 
+ >Dataset download page: [Click the link.](https://www.cityscapes-dataset.com/)
 <!---
 >**Note**: Systematically sampled slice numbers/images to be used are given in the repository inside the data preparation folder.
 -->
@@ -157,10 +157,10 @@ The quality of compression in terms of SSIM and pSNR at varying network depth or
 In the case of the segmentation model, dice coefficient values for the baselines and $net_{seg,D}(·)$, which is trained using compressed representations, are reported in Table I. The results indicate that $net_{seg,D}(·)$ performs similarly to BL 3 and BL 4 in terms of dice coefficient. This suggests that the compressed representations produced by $net_C(·)$ contain significant semantic information that can be leveraged for other image analysis tasks, even though $net_C(·)$ was not explicitly trained for this purpose. Further, it can be observed that increasing the value of d, which results in a deeper network and higher compression factor, results in poorer reconstruction from the compressed representation owing to loss of information
 
 ## Pre-trained Models
-Pretrained models for inference are available here. 
+Pretrained models for inference are available [here](http://kliv.iitkgp.ac.in/projects/miriad/model_weights/dl4c/model_weights.zip). 
 
 ## Sample Images for training
-The sample_images [sample_images](src/sample_images) folder under src contains images for you to test  out.
+The [sample_images](src/sample_images) folder under src contains images for you to test  out.
 ​
 ## Sample Output
 A comparison with the ground truth, baselines, and model outputs is shown below.
