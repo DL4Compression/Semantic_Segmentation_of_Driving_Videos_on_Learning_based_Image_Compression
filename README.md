@@ -244,64 +244,48 @@ A comparison with the ground truth, baselines, and model outputs is shown below.
 
 **Principal Investigators**
 
-​
-
 <a href="https://www.linkedin.com/in/debdoot/">Dr Debdoot Sheet</a></a></br>
-
 Department of Electrical Engineering,</br>
-
 Indian Institute of Technology Kharagpur</br>
-
 email: debdoot@ee.iitkgp.ac.in
 
-​
 
 <a href="https://www.linkedin.com/in/ramanathan-sethuraman-27a12aba/">Dr Ramanathan Sethuraman</a>,</br>
-
 Intel Technology India Pvt. Ltd.</br>
-
 email: ramanathan.sethuraman@intel.com
 
-​
 
-**Contributor**
 
-​
 
-The codes/model were contributed by
+**Contributors**
+<br>
+The codes/model were contributed by:
+<br>
 
-​
 <a href="https://github.com/ravikakaiya"> Ravi Kakaiya</a>,</br>
-
 Department of Electrical Engineering,</br>
-
 Indian Institute of Technology Kharagpur</br>
-
 email: ravijk8299@kgpian.iitkgp.ac.in</br>
-
 Github username: ravikakaiya
-
-​
 
 
 <a href="https://github.com/Rakshith2597"> Rakshith Sathish</a>,</br>
-
 Advanced Technology Development Center,</br>
-
 Indian Institute of Technology Kharagpur</br>
-
 email: rakshith.sathish@kgpian.iitkgp.ac.in</br>
-
 Github username: Rakshith2597
 
+
+<a href="https://github.com/PragyadiptaAdhya"> Pragyadipta Adhya</a>,</br>
+Department of Electrical Engineering,</br>
+Indian Institute of Technology Kharagpur</br>
+email: pragyadipta.adhya@kgpian.iitkgp.ac.in</br>
+Github username: PragyadiptaAdhya 
 ​
 
 ## References
 
-​
-
 <div id="densenet">
-
 <a href="#abs">[1]</a> Ravi Kakaiya, Rakshith Sathish, Debdoot Sheet, Ramananthan Sethuraman "Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation" .  </a> 
 
 </div>
