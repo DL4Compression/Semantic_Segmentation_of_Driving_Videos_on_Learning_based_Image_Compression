@@ -5,7 +5,7 @@ Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the pote
 
 
 <p align="center">
-<img src="image_folder_for_readme/images/pipeline_ravi.png" alt="seg" style="width:1000px; height:400px" title="Compressor Architecture"/>
+<img src="image_forder_for_readme/images/pipeline_ravi.png" alt="seg" style="width:1000px; height:400px" title="Compressor Architecture"/>
 
 
 <p>
@@ -65,35 +65,23 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 ## Code and Directory Organization
 
 ​
-
-	src/
-		data_prep/
-		
-		generation_of_patches.py
-		
-		compression/
-		dataloader/
-			compression_train_dataset.py
-		model/
-			model_without_batchnorm.py
-		training_and_inference/
-			compression_training.py
-			infer_save_lat_decom.py
-		
-		segmentation/
-		dataloader/
-			datasets.py 
-		model/
-			SEG_DECODER.py
-		training_and_inference/
-			training.py
-      			eval_lat.py
-	 utils/
-  		saved_models/
-	 
-		
-
-     
+src/
+	compression/
+ 			utils/
+    				dataloader_for_compression.py
+				model.py
+    			training.py
+       			inference_and_save_latent.py
+ 	data_preperation/
+  			generation_of_patches.py
+     	sample_images/
+  	segmentation/
+   			utils/
+      				dataloader_for_segmentation.py
+	  			segmentation_model_decoder.py
+      			training.py
+	 		inference_and_save_latent.py
+      				
 
 ## System Specifications
 
@@ -165,14 +153,14 @@ The compression model $net_C( . ) - net_D( . )$ was trained for 100 epochs with 
 rate of $1 × 10^{-2}$, step size of 10 and multiplication factor γ of 0.75. The segmentation decoder ($net_{seg,D′}$) was trained for 40,000 iterations using SGD as the optimizer with an initial learning rate of $1×10^{-3}$. Mean square error and cross-entropy loss were chosen as loss functions for compression and segmentation, respectively.
 
 <p align="center">
-<img src="image_folder_for_readme/images/compr_ravi.png" alt="cmpr" style="width:450px; height:350px" title="Compressor Architecture"/>     <img src="image_folder_for_readme/images/decompr_ravi.png" alt="dcmpr" style="width:450px; height:350px" "Decompressor Architecture"/>
+<img src="image_forder_for_readme/images/compr_ravi.png" alt="cmpr" style="width:450px; height:350px" title="Compressor Architecture"/>     <img src="image_forder_for_readme/images/decompr_ravi.png" alt="dcmpr" style="width:450px; height:350px" "Decompressor Architecture"/>
 
 </p>
 <p align="center">
 			    	Compressor-Decompressor Architecutre
 		<p>
 <p align="center">
-<img src="image_folder_for_readme/images/segmentation_ravi.png" alt="seg" style="width:550px; height:350px" title="Compressor Architecture"/>
+<img src="image_forder_for_readme/images/segmentation_ravi.png" alt="seg" style="width:550px; height:350px" title="Compressor Architecture"/>
 
 
 <p>
