@@ -19,7 +19,7 @@ Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the pote
 >**Paper** : Ravi Kakaiya, Rakshith Sathish, Debdoot Sheet, Ramananthan Sethuraman **"Exploiting Richness of Learned Compressed
 Representation of Images for Semantic Segmentation"** . </br> 
 
-> _Access the paper via_ 
+> Access the paper via the [Arxiv link]( https://arxiv.org/abs/2307.01524)
 ​
 
 
