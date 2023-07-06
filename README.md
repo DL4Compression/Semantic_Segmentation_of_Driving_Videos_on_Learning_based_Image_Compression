@@ -77,20 +77,19 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 	      		infer_and_save.py
 	      		train.py
   		
-
   
-      		data_preperation/
+      	data_preperation/
       			generation_of_patches.py
-		sample_images/
+		
+  		sample_images/
 
+     	segmentation/
+      		utils/
+				dataloader.py
+   				model.py
 
-     		 segmentation/
-      			utils/
-					dataloader.py
-   					model.py
-
-	        		infer_and_save.py
-				train.py
+	        	infer_and_save.py
+			train.py
 	LICENSE
 	README.md
 
