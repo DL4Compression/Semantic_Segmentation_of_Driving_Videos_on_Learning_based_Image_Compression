@@ -72,10 +72,6 @@ def main( args ):
 
 		print(f'Epoch:{epoch}/{args.epochs}')
 
-		# choose randomize subset if requested
-		if args.randomize_subset:
-			iddtrain.choose_random_subset(args.subset_size)
-
 		model.train() # training mode ON
 		cnt=0
 		avg_train_loss = 0
@@ -186,9 +182,7 @@ if __name__ == '__main__':
 	parser.add_argument('-e', '--epochs', type=int, required=False, default=100, help='Number of epochs to run')
 	parser.add_argument('-g', '--gpu', action='store_true', help='Want GPU ?')
 	parser.add_argument('-i', '--interval', type=int, required=False, default=50, help='Iteration interval for display')
-	parser.add_argument('-s', '--subset_size', type=int, required=False, default=0, help='Size of the randomly selected subset')
 	parser.add_argument('--model_file_name', type=str, required=True, help='Name of model and log files')
-	parser.add_argument('--randomize_subset', action='store_true', help='Randomize selected subset in every epoch ?')
 	parser.add_argument('--n_convblocks', type=int, required=False, default=3, help='no of conv blocks in the architecture')
 	
 	args = parser.parse_args()
