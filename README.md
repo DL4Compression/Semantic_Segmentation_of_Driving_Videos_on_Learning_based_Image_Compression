@@ -16,7 +16,8 @@ Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the pote
 ​
 
 
->**Paper** : Kakaiya, Ravi, et al. (2023) “Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation.”  IEEE International Conference on Multimedia and Expo 2023  . </br> 
+>**Paper** : Kakaiya, R., Sathish, R., Sheet, D. and Sethuraman, R.  2023. Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation. In Proceedings of IEEE International Conference on Multimedia and Expo (ICME) 2023 Brisbane, Australia. 
+  . </br> 
 
 > Access the paper via the [Arxiv link]( https://arxiv.org/abs/2307.01524)
 ​
@@ -211,6 +212,7 @@ Github username: PragyadiptaAdhya
 ## References
 
 <div id="densenet">
-<a href="#abs">[1]</a> Ravi Kakaiya, Rakshith Sathish, Debdoot Sheet, Ramananthan Sethuraman "Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation" .  </a> 
+<a href="#abs">[1]</a> Kakaiya, R., Sathish, R., Sheet, D. and Sethuraman, R.  2023. Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation. In Proceedings of IEEE International Conference on Multimedia and Expo (ICME) 2023 Brisbane, Australia. 
+ .  </a> 
 
 </div>
