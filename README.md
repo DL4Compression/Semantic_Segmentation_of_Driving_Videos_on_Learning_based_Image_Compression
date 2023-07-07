@@ -82,6 +82,7 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
       			generation_of_patches.py
 		
   		sample_images/
+    			folder_for_training_and_testing/
 
      	segmentation/
       		utils/
