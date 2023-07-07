@@ -1,5 +1,5 @@
-# Exploiting-Richness-of-Learned-Compressed-Representation
-Official implementation of the paper "Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation"
+# Semantic Segmentation of Driving Videos on Learning based Image Compression
+### Official implementation of the paper "Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation"
 
 Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the potential to radically change the way we travel. Many of such vehicles currently rely on segmentation and object detection algorithms to detect and track objects around its surrounding. The data collected from the vehicles are often sent to cloud servers to facilitate continual/life-long learning of these algorithms. Considering the bandwidth constraints, the data is compressed before sending it to servers, where it is typically decompressed for training and analysis. In this work, we propose the use of a learning-based compression Codec to reduce the overhead in latency incurred for the decompression operation in the standard pipeline. We demonstrate that the learned compressed representation can also be used to perform tasks like semantic segmentation in addition to decompression to obtain the images. We experimentally validate the proposed pipeline on the Cityscapes dataset, where we achieve a compression factor up to 66× while preserving the information required to perform segmentation with a dice coefficient of 0.84 as compared to 0.88 achieved using decompressed images while reducing the overall compute by 11%.
 
@@ -115,7 +115,7 @@ Follow the below steps to prepare and organize the data for training.
 
 > Details about the arguments being passed and their purpose is explained within the code.
 ​
->  Make sure the dataset has been adequately downloaded and extracted before proceeding.
+> Make sure the dataset has been adequately downloaded and extracted before proceeding.
 
 1. The compression model ( $net_C( . ) - net_D( . )$ ) for all baselines and the proposed method are trained with patches of 256×256, and segmentation models ( $net_{seg}( . ), net_{seg, D'}( . )$ ) were trained using non-overlapping patches of size 840×840, respectively, which were extracted from the training set without any overlapping.
 
@@ -158,7 +158,7 @@ In the case of the segmentation model, dice coefficient values for the baselines
 ## Pre-trained Models
 Pretrained models for inference are available [here](http://kliv.iitkgp.ac.in/projects/miriad/model_weights/dl4c/model_weights.zip). 
 
-## Sample Images for training
+## Sample Images for inference
 The [sample_images](src/sample_images) folder under src contains images for you to test  out.
 ​
 ## Sample Output
