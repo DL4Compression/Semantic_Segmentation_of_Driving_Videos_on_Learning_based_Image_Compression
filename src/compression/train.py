@@ -5,11 +5,11 @@ import functools, operator, numpy as np
 from termcolor import colored
 import json
 cudnn.benchmark = True
-from utils.compression_train_dataset import IDD
-from model_without_batchnorm import autoencoder
+from utils.dataloader import IDD
+from utils.model import autoencoder
 from torchmetrics import PeakSignalNoiseRatio
-import wandb
-wandb.init(project="CAE_natural_video_compression_IDD_driving_16_03_23",name = "model_d_2", entity="ravijk")
+
+
 from tqdm import tqdm as tq
 import random
 
@@ -29,10 +29,10 @@ def main( args ):
 	images_transforms_test = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
 	iddtrain = IDD(args.traindata,
 		transform_images=images_transforms)
-	iddtraindl = data.DataLoader(iddtrain, batch_size=args.batch_size, num_workers=8, pin_memory=True, shuffle=True)
+	iddtraindl = data.DataLoader(iddtrain, batch_size=args.batch_size, num_workers=4, pin_memory=True, shuffle=True)
 	iddtest = IDD(args.testdata,
 		transform_images=images_transforms_test)
-	iddtestdl = data.DataLoader(iddtest, batch_size=args.batch_size, num_workers=8, pin_memory=True, shuffle=False)
+	iddtestdl = data.DataLoader(iddtest, batch_size=args.batch_size, num_workers=4, pin_memory=True, shuffle=False)
 
 	# Model instance with variable number of DownConv blocks
 	# args.n_downconvs = 3 corresponds to CVPR paper
@@ -93,12 +93,7 @@ def main( args ):
 			loss.backward() # backward
 			optimizer.step() # weight updatepr
 		avg_train_loss = avg_train_loss/idx+1
-		wandb.log(			
-			{
-				"epochs": epoch,
-				"Training mse loss": avg_train_loss,
-			}
-		)
+
 		# TRAINING DONE
 		model.eval() # switch to evaluation mode
 
@@ -122,14 +117,7 @@ def main( args ):
 
 		schedular.step()
 
-		wandb.log(			
-			{
-				"epoch": epoch,
-				"validation loss": avg_loss,
-				"validation pSNR": avg_psnr,
-				# "validation SSIM": avg_ssim,
-			}
-		)
+
 		logg.append(
 			{
 				'epoch': epoch,
