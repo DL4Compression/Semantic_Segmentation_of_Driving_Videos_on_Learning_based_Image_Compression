@@ -8,7 +8,7 @@ import numpy as np
 import sys
 import pickle, pdb
 from PIL import Image
-import huffman
+# import huffman
 from dahuffman import HuffmanCodec
 import cv2
 import time
@@ -16,8 +16,8 @@ from tqdm import tqdm as tq
 from torchmetrics.functional import structural_similarity_index_measure as ssim
 from torchmetrics.functional import peak_signal_noise_ratio as psnr
 
-from model_without_batchnorm import autoencoder
-from utils.compression_test_dataset import IDDCOM
+from utils.model import autoencoder
+from utils.dataloader_test import IDDCOM
 import timeit
 
 # The Float->Int module
@@ -52,7 +52,7 @@ def main( args ):
     
 
     # load the given model
-    loaded_model_file = torch.load(args.model_file)
+    loaded_model_file = torch.load(args.model_file, map_location = torch.device('cpu'))
     model.load_state_dict(loaded_model_file['model_state'])
     if torch.cuda.is_available() and args.gpu:
         # print("model sent to cuda")
@@ -92,8 +92,7 @@ def main( args ):
                 # usual numpy conversions
                 image_numpy = image.cpu().numpy()
                 latent_int_numpy = latent_int.cpu().numpy()
-
-                
+                latent_inp = torch.tensor(latent_int_numpy)
                 if args.with_aac:
                     # encode latent_int with Huffman coding
                     inpt=[]
@@ -134,7 +133,7 @@ def main( args ):
 
                 original, reconstructed = image_numpy, decompressed.cpu().numpy()
                 # en = timeit.timeit()
-                all_cf.append(cf)
+                #all_cf.append(cf)
 
                 n += 1
 
