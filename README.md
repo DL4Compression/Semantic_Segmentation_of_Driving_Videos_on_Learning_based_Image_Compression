@@ -72,6 +72,7 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 		compression/
         		utils/
 				dataloader.py
+    				dataloader_test.py
    				model.py
 
 	      		infer_and_save.py
