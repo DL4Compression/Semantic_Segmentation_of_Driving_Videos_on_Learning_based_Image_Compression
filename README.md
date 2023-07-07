@@ -83,7 +83,7 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
       			generation_of_patches.py
 		
   		sample_images/
-    			folder_for_training_and_testing/
+    			folder_for_training_and_inference/
 
      	segmentation/
       		utils/
@@ -120,6 +120,7 @@ Follow the below steps to prepare and organize the data for training.
 > Make sure the dataset has been adequately downloaded and extracted before proceeding.
 
 1. The compression model ( $net_C( . ) - net_D( . )$ ) for all baselines and the proposed method are trained with patches of 256×256, and segmentation models ( $net_{seg}( . ), net_{seg, D'}( . )$ ) were trained using non-overlapping patches of size 840×840, respectively, which were extracted from the training set without any overlapping.
+2.  An important point that is to be noted is that the data for training and inference should should be kept folderwise inside a master folder as we have kept in sample_images/forder_for_training_and_inference.
 
 	
 ## Training
