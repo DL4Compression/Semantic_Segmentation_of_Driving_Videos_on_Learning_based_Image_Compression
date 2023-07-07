@@ -130,19 +130,19 @@ The compression model $net_C( . ) - net_D( . )$ was trained for 100 epochs with 
 rate of $1 × 10^{-2}$, step size of 10 and multiplication factor γ of 0.75. The segmentation decoder ($net_{seg,D′}$) was trained for 40,000 iterations using SGD as the optimizer with an initial learning rate of $1×10^{-3}$. Mean square error and cross-entropy loss were chosen as loss functions for compression and segmentation, respectively.
 
 <p align="center">
-<img src="media/compr.png" alt="cmpr" style="width:400px; height:300px" title="Compressor Architecture"/> <img src="media/decompr.png" alt="dcmpr" style="width:400px; height:300px" "Decompressor Architecture"/>
+<img src="media/compression_pipeline.png" alt="cmpr" style="width:800px; height:400px" title="Compressor Architecture"/>
 
 </p>
 <p align="center">
 			    	Compressor-Decompressor Architecutre
 		<p>
 <p align="center">
-<img src="media/segmentationi.png" alt="seg" style="width:500px; height:300px" title="Compressor Architecture"/>
+<img src="media/segmentation_pipeline.png" alt="seg" style="width:800px; height:400px" title="Segmentation Architecture"/>
 
 
 <p>
 <p align="center">
-			    	Segmentation Decoder Architecture
+			    	Segmentation Architecture
 		<p>
 
 
