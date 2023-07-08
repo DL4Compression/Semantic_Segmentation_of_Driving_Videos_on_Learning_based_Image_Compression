@@ -1,5 +1,3 @@
-# Common Segmentation Operator implemented by Pytorch
-# XiangtaiLi(lxtpku@pku.edu.cn)
 
 import torch
 import torch.nn as nn
