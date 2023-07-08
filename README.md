@@ -66,7 +66,7 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
 
 
 
-	Exploiting-Richness-of-Learned-Compressed-Representation/
+	Semantic-Segmentation-of-Driving-Videos-on-Learning-based-Image-Compression/
 	  media/
 	  src/
 		compression/
