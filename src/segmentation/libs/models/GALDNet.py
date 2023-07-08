@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-# Author: Xiangtai(lxt@pku.edu.cn)
-# GA module is borrowed from CGNL paper directly
-# Pytorch implementation of GALD-Net
 
 
 import torch.nn as nn
