@@ -8,7 +8,6 @@ import numpy as np
 import sys
 import pickle, pdb
 from PIL import Image
-# import huffman
 from dahuffman import HuffmanCodec
 import cv2
 import time
@@ -133,7 +132,7 @@ def main( args ):
 
                 original, reconstructed = image_numpy, decompressed.cpu().numpy()
                 # en = timeit.timeit()
-                #all_cf.append(cf)
+                all_cf.append(cf)
 
                 n += 1
 
