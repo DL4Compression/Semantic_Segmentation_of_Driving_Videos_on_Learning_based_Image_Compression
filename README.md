@@ -83,15 +83,42 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
       			generation_of_patches.py
 		
   		sample_images/
-    			folder_for_training_and_inference/
+    			for_compression/
+       				folder_for_inference
+	   			for_segmentation/
+      				folder_for_inference/
+	  					gt/
+       						test
+	     					lat_5_d2/
+	  						test
+	   
 
      	segmentation/
+      		libs/
+				core/
+    				loss.py
+	 				operators.py
+   				dataloader_latent/
+       					latent_city.py
+      			models/
+	 				DualGCNNet.py
+     				GLADNet.py
+	 				PSPNet.py
+	 			utils/
+					image_utils.py
+     				logger.py
+	  				tools.py
+       					
       		utils/
 				dataloader.py
    				model.py
 
 	        	infer_and_save.py
+	  		infer.sh
+     		train_dual_seg_r_50.sh
 			train.py
+   		requirements_all.txt
+   			
 	LICENSE
 	README.md
 
@@ -176,6 +203,16 @@ The quality of compression in terms of SSIM and pSNR at varying network depth or
 In the case of the segmentation model, dice coefficient values for the baselines and $net_{seg,D}(·)$, which is trained using compressed representations, are reported in Table I. The results indicate that $net_{seg,D}(·)$ performs similarly to BL 3 and BL 4 in terms of dice coefficient. This suggests that the compressed representations produced by $net_C(·)$ contain significant semantic information that can be leveraged for other image analysis tasks, even though $net_C(·)$ was not explicitly trained for this purpose. Further, it can be observed that increasing the value of d, which results in a deeper network and higher compression factor, results in poorer reconstruction from the compressed representation owing to loss of information.
 
 ## Executing the Code
+For the compression module, execute the train.py file for training of the model, and infer_and_save.py for inference and saving the latent vectors. The parameters needs to be passed as arguements for these codes which are well commented.
+An example to show how to rub the inference code is 
+>  python < location of infer_and_save.py> -m < location of weights> --inferdata < location of the data for inference> --gpu --with_aac -l -d --out_latent < location to save latent vectors> --out_decom < location to save decompressed outputs>
+
+
+For the execution of the segmentation module, run the train_dual_seg_r_50.sh file for training and the infer.sh file for the inference. They contain the argguements that need to be passed for the train.py and infer_and_save.py files which are actually the programs for training and inference of the model.
+An example to show how to run the training and inference code is 
+> sh < location of train_dual_seg_r_50.sh>
+
+> sh < location of infer.sh>
 
 ## Pre-trained Models
 Pretrained models for inference are available [here](http://kliv.iitkgp.ac.in/projects/miriad/model_weights/dl4c/model_weights.zip). 
