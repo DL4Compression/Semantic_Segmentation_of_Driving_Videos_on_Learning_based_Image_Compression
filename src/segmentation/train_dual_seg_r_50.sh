@@ -13,4 +13,4 @@ CUDA_VISIBLE_DEVICES=0 python -m torch.distributed.launch --nproc_per_node=1 tra
 --save_dir "./" \
 --ohem 1 --ohem_thres 0.7 --ohem_keep 100000 \
 --log_file "dual_seg_r50_city.log" \
---restore_from "/home/pragyadipta/Semantic-Segmentation-of-Driving-Videos-on-Learning-based-Image-Compression/model_weights_icme/DualSeg_res50_final.pth"
+--restore_from # add path to the model weight uploaded on the link named s DualSeg_res50_final.pth"
