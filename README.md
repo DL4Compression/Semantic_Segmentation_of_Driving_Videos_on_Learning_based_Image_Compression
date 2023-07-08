@@ -91,8 +91,6 @@ The Cityscapes dataset was used for our training and evaluation. It has 5,000 im
        						test
 	     					lat_5_d2/
 	  						test
-	   
-
      	segmentation/
       		libs/
 				core/
