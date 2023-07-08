@@ -1,5 +1,5 @@
 # Semantic Segmentation of Driving Videos on Learning based Image Compression
-### Official implementation of the paper: Kakaiya, R., Sathish, R., Sheet, D. and Sethuraman, R.  2023. Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation. In Proceedings of the IEEE International Conference on Multimedia and Expo (ICME) 2023 Brisbane, Australia. 
+### Official implementation of the paper: Kakaiya, R., Sathish, R., Sheet, D. and Sethuraman, R.  2023. Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation. In Proceedings of the IEEE International Conference on Multimedia and Expo (ICME) 2023 Brisbane, Australia.
 
 Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the potential to radically change the way we travel. Many of such vehicles currently rely on segmentation and object detection algorithms to detect and track objects around its surrounding. The data collected from the vehicles are often sent to cloud servers to facilitate continual/life-long learning of these algorithms. Considering the bandwidth constraints, the data is compressed before sending it to servers, where it is typically decompressed for training and analysis. In this work, we propose the use of a learning-based compression Codec to reduce the overhead in latency incurred for the decompression operation in the standard pipeline. We demonstrate that the learned compressed representation can also be used to perform tasks like semantic segmentation in addition to decompression to obtain the images. We experimentally validate the proposed pipeline on the Cityscapes dataset, where we achieve a compression factor up to 66× while preserving the information required to perform segmentation with a dice coefficient of 0.84 as compared to 0.88 achieved using decompressed images while reducing the overall compute by 11%.
 
@@ -17,7 +17,7 @@ Autonomous vehicles and Advanced Driving Assistance Systems (ADAS) have the pote
 
 
 >**Paper** : Kakaiya, R., Sathish, R., Sheet, D. and Sethuraman, R.  2023. Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation. In Proceedings of the IEEE International Conference on Multimedia and Expo (ICME) 2023 Brisbane, Australia. 
-  . </br> 
+</br> 
 
 > Access the paper via the [Arxiv link]( https://arxiv.org/abs/2307.01524)
 ​
@@ -109,6 +109,24 @@ The code and models were tested on a system with the following hardware and soft
 - NVidia* GPU for training
 
 - 16GB RAM for inference
+
+## Installing Dependencies
+The provided codes have required dependencies which are required to be installed before running them. We have provided all the requirements in the requirements_all.txt file which need to be installed. We have also used used Apex toolkit for using multiple GPU's for parallel training of heavy models. Follow the said procedure to get your system ready.
+
+1. Clone the entie repository in your system.
+2. Go to the src directory using
+> cd /Semantic-Segmentation-of-Driving-Videos-on-Learning-based-Image-Compression/src
+> 
+> pip install -r requirements_all.txt
+4. Go to the segmentation directory and Install APEX by following the following steps
+> git clone https://github.com/ptrblck/apex.git
+>
+>cd apex
+>
+>git checkout apex_no_distributed
+>
+>pip install -v --no-cache-dir ./
+
 
 
 ## Data Preparation
@@ -215,7 +233,6 @@ Github username: PragyadiptaAdhya
 ## References
 
 <div id="densenet">
-<a href="#abs">[1]</a> Kakaiya, R., Sathish, R., Sheet, D. and Sethuraman, R.  2023. Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation. In Proceedings of the IEEE International Conference on Multimedia and Expo (ICME) 2023 Brisbane, Australia. 
- .  </a> 
+<a href="#abs">[1]</a> Kakaiya, R., Sathish, R., Sheet, D. and Sethuraman, R.  2023. Exploiting Richness of Learned Compressed Representation of Images for Semantic Segmentation. In Proceedings of the IEEE International Conference on Multimedia and Expo (ICME) 2023 Brisbane, Australia. </a> 
 
 </div>
