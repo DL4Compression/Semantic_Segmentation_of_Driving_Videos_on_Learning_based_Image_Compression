@@ -15,7 +15,7 @@ import torch.backends.cudnn as cudnn
 
 from libs.utils.logger import Logger as Log
 from libs.utils.tools import adjust_learning_rate, all_reduce_tensor
-from libs.datasets.latent_city import Cityscapes
+from libs.dataloader_latent.latent_city import Cityscapes
 
 from libs.core.loss import CriterionOhemDSN, CriterionDSN
 
