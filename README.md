@@ -138,9 +138,8 @@ Follow the below steps to prepare and organize the data for training.
 > Make sure the dataset has been adequately downloaded and extracted before proceeding.
 
 1. The compression model ( $net_C( . ) - net_D( . )$ ) for all baselines and the proposed method are trained with patches of 256×256, and segmentation models ( $net_{seg}( . ), net_{seg, D'}( . )$ ) were trained using non-overlapping patches of size 840×840, respectively, which were extracted from the training set without any overlapping.
-2.  An important point that is to be noted is that the data for training and inference should should be kept folderwise inside a master folder as we have kept in sample_images/forder_for_training_and_inference.
-
-	
+2.  An important point that is to be noted is that the data for training and inference should should be kept folderwise inside a master folder as we have kept in sample_images/for_compression/folder_for_imference and sample_images/for_segmentation/folder_for_inference.
+3. The training and inference of the Segmentation model takes ground truths of segmentation and latent vector of the original images as its input. Create patches of 840×840 of the ground truths and original images using the generation_of_patches.py program. The latent vector of those image patches can be obtained using the infer_and_save.py program in the compression directory where the model needs to be the compression model with d=2. 
 ## Training
 > Details about the arguments being passed and their purpose is explained within the code. <!---To see the details run `python train_network.py -h` -->
 
