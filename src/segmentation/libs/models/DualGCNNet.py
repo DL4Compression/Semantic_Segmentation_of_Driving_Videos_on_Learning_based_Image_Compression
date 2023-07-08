@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-# Author: Xiangtai(lxt@pku.edu.cn)
-# Pytorch implementation of Dual-GCN net
+
 import torch
 import torch.nn.functional as F
 import torch.nn as nn
