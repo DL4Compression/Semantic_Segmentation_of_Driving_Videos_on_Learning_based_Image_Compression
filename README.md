@@ -136,7 +136,7 @@ The code and models were tested on a system with the following hardware and soft
 - 16GB RAM for inference
 
 ## Installing Dependencies
-The provided codes have required dependencies that need to be installed before running them. We have included all the requirements in the requirements_all.txt file which need to be installed. We have utilised the Apex toolkit to use multiple GPU's for parallel training of heavy models. Follow the said procedure to get your system ready.
+The provided codes have required dependencies that need to be installed before running them. We have included all the requirements in the requirements_all.txt file which needs to be installed. We have utilised the Apex toolkit to use multiple GPU's for parallel training of heavy models. Follow the said procedure to get your system ready.
 1. Create a new conda environment.
 2. Clone the entie repository in your system.
 3. Go to the src directory using
