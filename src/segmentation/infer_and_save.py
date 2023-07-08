@@ -142,7 +142,6 @@ def predict_whole(net, image, tile_size):
     if isinstance(prediction, list):
         prediction = prediction[0]
     prediction = interp(prediction).cpu().data[0].numpy().transpose(1, 2, 0)
-    # print(prediction.shape)
     return prediction
 
 
@@ -154,17 +153,14 @@ def predict_multiscale(net, image, tile_size, scales, classes, flip_evaluation):
     """
     image = image.data
     N_, C_, H_, W_ = image.shape
-    # print(tile_size)
     full_probs = np.zeros((tile_size[0], tile_size[1], classes))
     for scale in scales:
         scale = float(scale)
-        # print("Predicting image scaled by %f" % scale)
         scale_image = ndimage.zoom(image, (1.0, 1.0, scale, scale), order=1, prefilter=False)
         scaled_probs = predict_whole(net, scale_image, tile_size)
         if flip_evaluation == True:
             flip_scaled_probs = predict_whole(net, scale_image[:, :, :, ::-1].copy(), tile_size)
             scaled_probs = 0.5 * (scaled_probs + flip_scaled_probs[:, ::-1, :])
-        # print(full_probs.shape)
         full_probs += scaled_probs
     full_probs /= len(scales)
     return full_probs
@@ -195,8 +191,7 @@ def val():
     """Create the models and start the evaluation process."""
     args = get_arguments()
 
-    # gpu0 = args.gpu
-    # os.environ["CUDA_VISIBLE_DE VICES"] = args.gpu
+
     h, w = args.input_size, args.input_size
     if args.whole:
         input_size = (args.tile_size_h, args.tile_size_w)
