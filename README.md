@@ -180,7 +180,7 @@ rate of $1 × 10^{-2}$, step size of 10 and multiplication factor γ of 0.75. Th
 			    	Compressor-Decompressor Architecutre
 		<p>
 <p align="center">
-<img src="media/segmentation_pipeline.png" alt="seg" style="width:800px; height:400px" title="Segmentation Architecture"/>
+<img src="media/segmentation_pipeline_final.png" alt="seg" style="width:800px; height:400px" title="Segmentation Architecture"/>
 
 
 <p>
